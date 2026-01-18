@@ -12,7 +12,7 @@ class Request(BaseModel):
 app = FastAPI()
 
 origins = [
-    "http://localhost:8000"
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-temp_db = {"Location": [], "Budget": [], "Date": []}
+temp_db = []
 
 @app.get(path="/requests", response_model=List[Request])
 def get_requests():
