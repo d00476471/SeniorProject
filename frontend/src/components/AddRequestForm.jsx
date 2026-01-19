@@ -7,6 +7,16 @@ const AddRequestForm = ({ addRequest }) => {
         date: ''
     });
 
+    // Updates inputs with name being the field name and the value being the value in that field and the setFormData makes sure that 
+    //previous data isnt cleared out when you update one part of the form
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -31,7 +41,6 @@ const AddRequestForm = ({ addRequest }) => {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '300px' }}>
             <h3>Add New Trip Request</h3>
 
-            {/* Location Input */}
             <input
                 type="text"
                 name="location"
@@ -41,7 +50,6 @@ const AddRequestForm = ({ addRequest }) => {
                 required
             />
 
-            {/* Budget Input */}
             <input
                 type="number"
                 name="budget"
@@ -51,8 +59,6 @@ const AddRequestForm = ({ addRequest }) => {
                 required
             />
 
-            {/* Date Input */}
-            {/* Note: Using number type to match your 'date: int' backend model */}
             <input
                 type="number"
                 name="date"
