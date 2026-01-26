@@ -4,7 +4,8 @@ const AddRequestForm = ({ addRequest }) => {
     const [formData, setFormData] = useState({
         location: '',
         budget: '',
-        date: ''
+        depart: '',
+        ret: ''
     });
 
     // Updates inputs with name being the field name and the value being the value in that field and the setFormData makes sure that 
@@ -21,24 +22,25 @@ const AddRequestForm = ({ addRequest }) => {
         event.preventDefault();
 
         // make sure form is filled out
-        if (formData.location && formData.budget && formData.date) {
+        if (formData.location && formData.budget && formData.depart && formData.ret) {
 
-            // Convert strings to correct values
+            // convert strings to correct values
             const payload = {
                 location: formData.location,
                 budget: parseInt(formData.budget),
-                date: parseInt(formData.date)
+                depart: parseInt(formData.depart),
+                ret: parseInt(formData.ret)
             };
 
             addRequest(payload);
 
-            // Reset form after submitted
-            setFormData({ location: '', budget: '', date: '' });
+            // reset form after submitted
+            setFormData({ location: '', budget: '', depart: '', ret: '' });
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '300px' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '300px'}}>
             <h3>Add New Trip Request</h3>
 
             <input
@@ -61,10 +63,19 @@ const AddRequestForm = ({ addRequest }) => {
 
             <input
                 type="number"
-                name="date"
-                value={formData.date}
+                name="depart"
+                value={formData.depart}
                 onChange={handleChange}
-                placeholder="Date (e.g. 20230101)"
+                placeholder="Departure Date (e.g. 20260101)"
+                required
+            />
+
+            <input
+                type="number"
+                name="ret"
+                value={formData.ret}
+                onChange={handleChange}
+                placeholder="Return Date (e.g. 20260101)"
                 required
             />
 

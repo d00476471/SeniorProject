@@ -7,16 +7,17 @@ from typing import List
 
 flight_results = []
 
-def flight_search(destination: str, max_price: int, date: int):
+def flight_search(destination: str, max_price: int, depart: int, ret: int):
     print(f"Looking for flights to {destination} under ${max_price}")
-    results = flightLookup.lookupRequest(destination, max_price, date)
+    results = flightLookup.lookupRequest(destination, max_price, depart, ret)
     flight_results.clear()
     flight_results.extend(results)
 
 class Request(BaseModel):
     location: str
     budget: int
-    date: int
+    depart: int
+    ret: int
 
 app = FastAPI()
 
@@ -42,8 +43,9 @@ def get_requests():
 def add_request(req: Request):
     temp_db.append(req)
     #When we get information from the user we can call my search apis
-    flight_search(req.location, req.budget, req.date)
+    flight_search(req.location, req.budget, req.depart, req.ret)
     return req
 
 if __name__ == "__main__":
+    #flightLookup.lookupRequest("LAX", 2000, 20260202, 20260209)
     uvicorn.run(app, host="0.0.0.0", port=8000)
