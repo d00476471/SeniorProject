@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from typing import List
 
 flightResults = []
+driveResults = []
 
 def flightSearch(destination: str, max_price: int, depart: int, ret: int):
     print(f"Looking for flights from {destination} under ${max_price}")
@@ -18,7 +19,8 @@ def flightSearch(destination: str, max_price: int, depart: int, ret: int):
 def driveSearch(destination: str):
     print(f"Looking for drives from {destination}")
     results = locationLookup.getDrivingDestinations(destination)
-    print(results)
+    driveResults.clear()
+    driveResults.extend(results)
 
 
 class Request(BaseModel):
@@ -43,14 +45,19 @@ app.add_middleware(
 
 temp_db = []
 
-@app.get(path="/requests")
-def get_requests():
+@app.get(path="/flights")
+def get_flights():
     return flightResults
+
+@app.get(path="/drives")
+def get_drives():
+    return driveResults
 
 @app.post(path="/requests", response_model=Request)
 def add_request(req: Request):
     temp_db.append(req)
     # when we get information from the user we can call my search apis
+    driveSearch(req.location)
     flightSearch(req.location, req.budget, req.depart, req.ret)
     return req
 
