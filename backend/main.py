@@ -1,17 +1,25 @@
 import uvicorn
 import flightLookup
+import locationLookup
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 
-flight_results = []
+flightResults = []
 
-def flight_search(destination: str, max_price: int, depart: int, ret: int):
-    print(f"Looking for flights to {destination} under ${max_price}")
-    results = flightLookup.lookupRequest(destination, max_price, depart, ret)
-    flight_results.clear()
-    flight_results.extend(results)
+def flightSearch(destination: str, max_price: int, depart: int, ret: int):
+    print(f"Looking for flights from {destination} under ${max_price}")
+    airportCode = locationLookup.getNearestAirport(destination)
+    results = flightLookup.lookupRequest(airportCode, max_price, depart, ret)
+    flightResults.clear()
+    flightResults.extend(results)
+
+def driveSearch(destination: str):
+    print(f"Looking for drives from {destination}")
+    results = locationLookup.getDrivingDestinations(destination)
+    print(results)
+
 
 class Request(BaseModel):
     location: str
@@ -37,15 +45,16 @@ temp_db = []
 
 @app.get(path="/requests")
 def get_requests():
-    return flight_results
+    return flightResults
 
 @app.post(path="/requests", response_model=Request)
 def add_request(req: Request):
     temp_db.append(req)
-    #When we get information from the user we can call my search apis
-    flight_search(req.location, req.budget, req.depart, req.ret)
+    # when we get information from the user we can call my search apis
+    flightSearch(req.location, req.budget, req.depart, req.ret)
     return req
 
 if __name__ == "__main__":
-    #flightLookup.lookupRequest("LAX", 2000, 20260202, 20260209)
+    #flightSearch("St. George", 2000, 20260202, 20260209)
+    #driveSearch("St. George")
     uvicorn.run(app, host="0.0.0.0", port=8000)
