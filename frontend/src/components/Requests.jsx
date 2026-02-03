@@ -37,9 +37,34 @@ const Requests = () => {
         return `${h}h ${m}m`;
     };
 
+    const toggleSelection = (trip, type) => {
+
+        const tripId = `${type}-${trip.city_name}`;
+        
+        const isSelected = selectedTrips.some(t => t.id === tripId);
+
+        if (isSelected) {
+            //remove trip
+            setSelectedTrips(selectedTrips.filter(t => t.id !== tripId));
+        } else {
+            //add it
+            const newTrip = {
+                id: tripId,
+                destination: trip.city_name,
+                country: trip.country || "USA",
+                transport_type: type,
+                transport_cost: type === 'flight' ? (trip.price || trip.flight_price) : 0,
+                depart_date: "2026-06-01", 
+                return_date: "2026-06-06",
+                budget: 1000 
+            };
+            setSelectedTrips([...selectedTrips, newTrip]);
+        }
+    };
+
     return (
         <div>
-            <h2>Flight Search Results</h2>
+            <h2>Trip Search Results</h2>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
                 <AddRequestForm addRequest={addRequest} />
@@ -53,8 +78,10 @@ const Requests = () => {
                     <div style={styles.grid}>
 
                         {drives.map((drive, index) => (
-                            <div key={index} style={styles.card}>
+                            <div key={index} style={{...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'}} onClick={() => toggleSelection(drive, 'drive')}>
                                 <h3>{drive.city_name}</h3>
+                                <input type="checkbox" checked={isSelected} readOnly />
+
                                 <div style={styles.row}>
                                     <span style={styles.driveTime}>{drive.drive_time_hours} Hours</span>
                                     <span style={styles.airline}>{drive.distance_km} km</span>
@@ -79,10 +106,10 @@ const Requests = () => {
                             const airline = flight.airline || (flight.segments && flight.segments[0]?.airline) || "N/A";
 
                             return (
-                                <div key={index} style={styles.card}>
+                                <div key={index} style={{...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'}} onClick={() => toggleSelection(flight, 'flight')}>
                                     <h3>{flight.city_name || flight.segments?.[0]?.arrival_city}</h3>
+                                    <input type="checkbox" checked={isSelected} readOnly />
 
-                                    {flight.image && <img src={flight.image} alt="loc" style={styles.image} />}
 
                                     <div style={styles.row}>
                                         <span style={styles.price}>${price}</span>
@@ -92,13 +119,6 @@ const Requests = () => {
                                     <div style={styles.details}>
                                         <p><strong>Duration:</strong> {formatDuration(flight.duration_minutes)}</p>
                                         <p><strong>Stops:</strong> {flight.stops === 0 ? "Non-stop" : flight.stops}</p>
-
-                                        {/* hotel cost estimation */}
-                                        {flight.hotel_estimate && (
-                                            <div style={styles.hotelBox}>
-                                                <span>+ ${flight.hotel_estimate.total_stay} Hotel</span>
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
                             );
@@ -171,21 +191,13 @@ const styles = {
         borderTop: '1px solid #eee',
         paddingTop: '10px'
     },
-    image: {
-        width: '100%',
-        height: '120px',
-        objectFit: 'cover',
-        borderRadius: '4px',
-        marginBottom: '10px'
-    },
-    hotelBox: {
-        marginTop: '8px',
-        padding: '5px',
-        backgroundColor: '#fff3e0',
-        borderRadius: '4px',
-        fontSize: '0.85em',
-        color: '#ef6c00',
-        fontWeight: 'bold'
+    clickable: {
+        cursor: 'pointer',
+        transition: 'transform 0.1s, border 0.1s',
+        ':hover': {
+            transform: 'scale(1.02)',
+            border: '2px solid #2196f3'
+        }
     }
 };
 

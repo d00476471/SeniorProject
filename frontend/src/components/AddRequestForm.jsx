@@ -40,15 +40,15 @@ const AddRequestForm = ({ addRequest }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '300px'}}>
-            <h3>Add New Trip Request</h3>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px'}}>
+            <h3>Request a New Trip</h3>
 
             <input
                 type="text"
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                placeholder="Location (e.g. New York)"
+                placeholder="Starting Location (e.g. Las Vegas NV)"
                 required
             />
 
@@ -66,7 +66,7 @@ const AddRequestForm = ({ addRequest }) => {
                 name="depart"
                 value={formData.depart}
                 onChange={handleChange}
-                placeholder="Departure Date (e.g. 20260101)"
+                placeholder="Departure Date (e.g. YYYYDDMM)"
                 required
             />
 
@@ -75,7 +75,7 @@ const AddRequestForm = ({ addRequest }) => {
                 name="ret"
                 value={formData.ret}
                 onChange={handleChange}
-                placeholder="Return Date (e.g. 20260101)"
+                placeholder="Return Date (e.g. YYYYDDMM)"
                 required
             />
 
