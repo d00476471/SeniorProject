@@ -47,10 +47,12 @@ temp_db = []
 
 @app.get(path="/flights")
 def get_flights():
+    print(flightResults)
     return flightResults
 
 @app.get(path="/drives")
 def get_drives():
+    print(driveResults)
     return driveResults
 
 @app.post(path="/requests", response_model=Request)
