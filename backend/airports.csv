@@ -1135,7 +1135,7 @@ CKP,Cherokee Municipal,Cherokee,IA,USA,42.73147222,-95.55613889
 CKU,Cordova Muni,Cordova,AK,USA,60.54390333,-145.7267042
 CKV,Outlaw,Clarksville,TN,USA,36.62188083,-87.41495361
 CKX,Chicken,Chicken,AK,USA,64.07133833,-141.9522792
-CLD,MC Clellan-Palomar Airport,NA,NA,USA,33.127231,-117.278727
+CLD,MC Clellan-Palomar Airport,,,USA,33.127231,-117.278727
 CLE,Cleveland-Hopkins Intl,Cleveland,OH,USA,41.41089417,-81.84939667
 CLI,Clintonville Municipal,Clintonville,WI,USA,44.61381306,-88.73126667
 CLK,Clinton Municipal,Clinton,OK,USA,35.53832778,-98.932695
@@ -1204,7 +1204,6 @@ CUT,Custer County,Custer,SD,USA,43.73331611,-103.6176947
 CVG,Cincinnati Northern Kentucky Intl,Covington,KY,USA,39.04614278,-84.6621725
 CVK,Sharp County Regional,Ash Flat,AR,USA,36.26487139,-91.56264111
 CVN,Clovis Municipal,Clovis,NM,USA,34.42513889,-103.0792778
-CVO,Corvallis Muni,Corvallis,OR,USA,44.49719361,-123.2898297
 CVX,Charlevoix Municipal,Charlevoix,MI,USA,45.30477778,-85.27477778
 CWA,Central Wisconsin,Mosinee,WI,USA,44.77761917,-89.66677944
 CWF,Chennault International,Lake Charles,LA,USA,30.21059167,-93.14318944
@@ -1714,7 +1713,7 @@ HFY,Greenwood Municipal,Indianapolis/Greenwood,IN,USA,39.62841667,-86.08788889
 HGR,Hagerstown Regional-Richard Henson,Hagerstown,MD,USA,39.70794444,-77.7295
 HHF,Hemphill County,Canadian,TX,USA,35.89530778,-100.4036397
 HHG,Huntington Municipal,Huntington,IN,USA,40.85299,-85.45941917
-HHH,Hilton Head,NA,NA,USA,32.224384,-80.697629
+HHH,Hilton Head,,,USA,32.224384,-80.697629
 HHR,Jack Northrop Field/Hawthorne Municipal,Hawthorne,CA,USA,33.92283972,-118.3351872
 HHW,Stan Stamper Municipal,Hugo,OK,USA,34.03482556,-95.54190611
 HI01,Princeville,Hanalei,HI,USA,22.20919,-159.4455339
@@ -1722,7 +1721,6 @@ HIB,Chisholm-Hibbing,Hibbing,MN,USA,47.38659917,-92.83899333
 HIE,Mt Washington Regional,Whitefield,NH,USA,44.36761639,-71.54447111
 HIG,Higginsville Industrial Municipal,Higginsville,MO,USA,39.07334639,-93.67716083
 HII,Lake Havasu City,Lake Havasu City,AZ,USA,34.56816056,-114.3561783
-HIO,Portland-Hillsboro,Hillsboro (Portland),OR,USA,45.54039389,-122.9498258
 HJH,Hebron Municipal,Hebron,NE,USA,40.15225,-97.58697222
 HJO,Hanford Municipal,Hanford,CA,USA,36.31852194,-119.6288675
 HKA,Blytheville Municipal,Blytheville,AR,USA,35.94040667,-89.83080583
@@ -2250,7 +2248,7 @@ MHR,Sacramento Mather,Sacramento,CA,USA,38.55389694,-121.2975908
 MHT,Manchester,Manchester,NH,USA,42.93451639,-71.43705583
 MHV,Mojave,Mojave,CA,USA,35.05936472,-118.1518561
 MIA,Miami International,Miami,FL,USA,25.79325,-80.29055556
-MIB,Minot AFB,NA,NA,USA,48.415769,-101.358039
+MIB,Minot AFB,,,USA,48.415769,-101.358039
 MIC,Crystal,Minneapolis,MN,USA,45.06198611,-93.3539375
 MIE,Delaware County,Muncie,IN,USA,40.24234806,-85.39586
 MIO,Miami Municipal,Miami,OK,USA,36.90922083,-94.88750028
@@ -2286,7 +2284,6 @@ MMI,McMinn County,Athens,TN,USA,35.39730333,-84.56256861
 MMK,Meriden-Markham Municipal,Meriden,CT,USA,41.50871472,-72.82947833
 MML,Marshall Muni - Ryan,Marshall,MN,USA,44.45006611,-95.82234028
 MMU,Morristown Municipal,Morristown,NJ,USA,40.79935,-74.41487472
-MMV,McMinnville Muni,McMinnville,OR,USA,45.19444444,-123.1359444
 MNF,Mountain View,Mountain View,MO,USA,36.99282694,-91.71445611
 MNI,Clarendon County,Manning,SC,USA,33.58711111,-80.20866667
 MNM,Menominee-Marinette Twin County,Menominee,MI,USA,45.12665028,-87.63844056
@@ -2311,7 +2308,7 @@ MPZ,Mount Pleasant Municipal,Mount Pleasant,IA,USA,40.94661389,-91.511075
 MQB,Macomb Municipal,Macomb,IL,USA,40.52034556,-90.65246389
 MQI,Dare County Regional,Manteo,NC,USA,35.91898806,-75.69553944
 MQJ,Mount Comfort,Indianapolis,IN,USA,39.84348556,-85.89706389
-MQT,Marquette County Airport,NA,NA,USA,46.353639,-87.395361
+MQT,Marquette County Airport,,,USA,46.353639,-87.395361
 MQW,Telfair-Wheeler,McRae,GA,USA,32.09577778,-82.88002778
 MQY,Smyrna,Smyrna,TN,USA,36.00897944,-86.52007667
 MRB,Eastern Wv Reg/Shephard,Martinsburg,WV,USA,39.40193278,-77.98458139
@@ -2751,14 +2748,14 @@ RBG,Roseburg Regional,Roseburg,OR,USA,43.23878306,-123.3558617
 RBL,Red Bluff Municipal,Red Bluff,CA,USA,40.15065667,-122.2522903
 RBW,Walterboro Municipal,Walterboro,SC,USA,32.92052778,-80.64125
 RBY,Ruby,Ruby,AK,USA,64.72721556,-155.4698886
-RCA,Ellsworth AFB,NA,NA,USA,44.145094,-103.103567
+RCA,Ellsworth AFB,,,USA,44.145094,-103.103567
 RCR,Fulton County,Rochester,IN,USA,41.06554833,-86.18170444
 RCX,Rusk County,Ladysmith,WI,USA,45.49825694,-91.00186361
 RDD,Redding Municipal,Redding,CA,USA,40.50898361,-122.2934019
 RDG,"Reading Muni,Gen Carl A Spaatz",Reading,PA,USA,40.3785,-75.96525
 RDK,Red Oak Municipal,Red Oak,IA,USA,41.01052778,-95.25986111
 RDM,Roberts,Redmond,OR,USA,44.25406722,-121.1499633
-RDR,Grand Forks AFB,NA,NA,USA,47.961167,-97.401167
+RDR,Grand Forks AFB,,,USA,47.961167,-97.401167
 RDU,Raleigh-Durham International,Raleigh,NC,USA,35.87763889,-78.78747222
 RDV,Red Devil,Red Devil,AK,USA,61.78764333,-157.3479344
 RED,Red Lodge,Red Lodge,MT,USA,45.18744472,-109.2673778
@@ -2793,8 +2790,8 @@ RNV,Cleveland Municipal,Cleveland,MS,USA,33.76114056,-90.75787528
 ROA,Roanoke Regional/ Woodrum,Roanoke,VA,USA,37.32546833,-79.97542833
 ROC,Greater Rochester Int'l,Rochester,NY,USA,43.11886611,-77.67238389
 ROG,Rogers Municipal-Carter,Rogers,AR,USA,36.37229667,-94.10686972
-ROP,Prachinburi,NA,NA,Thailand,14.078333,101.378334
-ROR,Babelthoup/Koror,NA,NA,Palau,7.367222,134.544167
+ROP,Prachinburi,,,Thailand,14.078333,101.378334
+ROR,Babelthoup/Koror,,,Palau,7.367222,134.544167
 ROS,Rush City Regional,Rush City,MN,USA,45.69801389,-92.95298972
 ROW,Roswell Industrial Air Center,Roswell,NM,USA,33.30155556,-104.5305556
 ROX,Roseau Municipal,Roseau,MN,USA,48.85603806,-95.69703861
@@ -2899,7 +2896,7 @@ SBY,Salisbury-Ocean City: Wicomico Regional,Salisbury,MD,USA,38.34052611,-75.510
 SCB,Scribner State,Scribner,NE,USA,41.61033333,-96.62986111
 SCC,Deadhorse,Deadhorse,AK,USA,70.19475583,-148.4651608
 SCD,Merkel Field Sylacauga Municipal,Sylacauga,AL,USA,33.17183583,-86.30553778
-SCE,University Park,NA,NA,USA,40.851206,-77.846302
+SCE,University Park,,,USA,40.851206,-77.846302
 SCH,Schenectady Cty,Schenectady,NY,USA,42.85245556,-73.9288675
 SCK,Stockton Metro,Stockton,CA,USA,37.89426694,-121.2386203
 SCM,Scammon Bay,Scammon Bay,AK,USA,61.84454111,-165.5737492
@@ -2963,13 +2960,12 @@ SJN,St Johns Industrial Air Park,St Johns,AZ,USA,34.51855556,-109.37875
 SJT,San Angelo Regional /Mathis,San Angelo,TX,USA,31.35775,-100.4963056
 SJU,Luis Munoz Marin International,San Juan,PR,USA,18.43941667,-66.00183333
 SJX,Beaver Island,St James,MI,USA,45.69227778,-85.56630556
-SKA,Fairchild AFB,NA,NA,USA,47.615058,-117.655803
+SKA,Fairchild AFB,,,USA,47.615058,-117.655803
 SKI,Sac City Municipal,Sac City,IA,USA,42.37908333,-94.97958333
 SKW,Skwentna,Skwentna,AK,USA,61.965295,-151.1913661
 SKX,Taos Municipal,Taos,NM,USA,36.45819,-105.6724289
 SLB,Storm Lake Municipal,Storm Lake,IA,USA,42.59719444,-95.24066667
 SLC,Salt Lake City Intl,Salt Lake City,UT,USA,40.78838778,-111.9777731
-SLE,McNary Fld,Salem,OR,USA,44.90952778,-123.0025
 SLG,Smith,Siloam Springs,AR,USA,36.19060778,-94.49088306
 SLK,Adirondack,Saranac Lake,NY,USA,44.38531,-74.20618472
 SLN,Salina Municipal,Salina,KS,USA,38.7914825,-97.65060333
@@ -3000,7 +2996,7 @@ SPF,Black Hills-Clyde Ice,Spearfish,SD,USA,44.48022222,-103.7768889
 SPG,Albert Whitted Municipal,St. Petersburg,FL,USA,27.76511111,-82.62697222
 SPH,Springhill,Springhill,LA,USA,32.98316472,-93.41081028
 SPI,Capital,Springfield,IL,USA,39.84395194,-89.67761861
-SPN,Tinian International Airport,NA,NA,N Mariana Islands,14.996111,145.621384
+SPN,Tinian International Airport,,,N Mariana Islands,14.996111,145.621384
 SPS,Sheppard AFB/Wichita Falls Municipal,Wichita Falls,TX,USA,33.98879611,-98.49189333
 SPW,Spencer Municipal,Spencer,IA,USA,43.16552778,-95.20280556
 SPX,Houston-Gulf,Houston,TX,USA,29.50836111,-95.05133333
@@ -3188,7 +3184,6 @@ U76,Mountain Home Municipal,Mountain Home,ID,USA,43.13125278,-115.7295944
 U77,Spanish Fork-Springville,Spanish Fork,UT,USA,40.14162139,-111.6613125
 U82,Council Municipal,Council,ID,USA,44.7498875,-116.4468092
 U96,Cal Black Memorial,Halls Crossing,UT,USA,37.44221444,-110.5695836
-UAO,Aurora State,Aurora,OR,USA,45.24713889,-122.7700556
 UBE,Cumberland Municipal,Cumberland,WI,USA,45.50597028,-91.98108694
 UBS,Columbus-Lowndes County,Columbus,MS,USA,33.46539667,-88.38031639
 UBX,Cuba Municipal,Cuba,MO,USA,38.06877667,-91.42885694
@@ -3354,7 +3349,7 @@ Y74,Hankins,Parshall,ND,USA,47.93640083,-102.1421142
 Y83,Sandusky City,Sandusky,MI,USA,43.45418694,-82.84938028
 Y93,Atlanta Municipal,Atlanta,MI,USA,45.00000833,-84.13333667
 YAK,Yakutat,Yakutat,AK,USA,59.50336056,-139.6602261
-YAP,Yap International,NA,NA,Federated States of Micronesia,9.5167,138.1
+YAP,Yap International,,,Federated States of Micronesia,9.5167,138.1
 YIP,Willow Run,Detroit,MI,USA,42.2379275,-83.53040889
 YKM,Yakima Air Terminal,Yakima,WA,USA,46.56816972,-120.5440594
 YKN,Chan Gurney Municipal,Yankton,SD,USA,42.91669444,-97.38594444

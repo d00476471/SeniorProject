@@ -5,6 +5,7 @@ import AddRequestForm from './AddRequestForm';
 const Requests = () => {
     const [flights, setFlights] = useState([]);
     const [drives, setDrives] = useState([]);
+    const [selectedTrips, setSelectedTrips] = useState([]);
 
     const fetchRequests = async () => {
         api.get('/drives').then(response => {
@@ -77,21 +78,37 @@ const Requests = () => {
                     <h3 style={styles.columnHeader}>Drives</h3>
                     <div style={styles.grid}>
 
-                        {drives.map((drive, index) => (
-                            <div key={index} style={{...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'}} onClick={() => toggleSelection(drive, 'drive')}>
-                                <h3>{drive.city_name}</h3>
-                                <input type="checkbox" checked={isSelected} readOnly />
+                        {drives.map((drive, index) => {
 
-                                <div style={styles.row}>
-                                    <span style={styles.driveTime}>{drive.drive_time_hours} Hours</span>
-                                    <span style={styles.airline}>{drive.distance_km} km</span>
+                            // check if this specific drive is already in selectedTrips
+                            const isSelected = selectedTrips.some(t => t.id === `drive-${drive.city_name}`);
+
+                            return (
+                                <div 
+                                    key={index} 
+                                    style={{
+                                        ...styles.card, 
+                                        border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'
+                                    }} 
+                                    onClick={() => toggleSelection(drive, 'drive')}
+                                >
+                                    <div style={{display:'flex', justifyContent:'space-between'}}>
+                                        <h3>{drive.city_name}</h3>
+                                        {/* Now 'isSelected' is defined and will work here */}
+                                        <input type="checkbox" checked={isSelected} readOnly />
+                                    </div>
+
+                                    <div style={styles.row}>
+                                        <span style={styles.driveTime}>{drive.drive_time_hours} Hours</span>
+                                        <span style={styles.airline}>{drive.distance_km} km</span>
+                                    </div>
+                                    <div style={styles.details}>
+                                        <p><strong>Country:</strong> {drive.country}</p>
+                                        <p><strong>Mode:</strong> {drive.transport_mode}</p>
+                                    </div>
                                 </div>
-                                <div style={styles.details}>
-                                    <p><strong>Country:</strong> {drive.country}</p>
-                                    <p><strong>Mode:</strong> {drive.transport_mode}</p>
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -104,6 +121,7 @@ const Requests = () => {
                             if (!flight.price && !flight.flight_price) return null;
                             const price = flight.price || flight.flight_price;
                             const airline = flight.airline || (flight.segments && flight.segments[0]?.airline) || "N/A";
+                            const isSelected = selectedTrips.some(t => t.id === `flight-${flight.city_name}`);
 
                             return (
                                 <div key={index} style={{...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'}} onClick={() => toggleSelection(flight, 'flight')}>

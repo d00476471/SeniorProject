@@ -66,7 +66,7 @@ const AddRequestForm = ({ addRequest }) => {
                 name="depart"
                 value={formData.depart}
                 onChange={handleChange}
-                placeholder="Departure Date (e.g. YYYYDDMM)"
+                placeholder="Departure Date (e.g. YYYYMMDD)"
                 required
             />
 
@@ -75,7 +75,7 @@ const AddRequestForm = ({ addRequest }) => {
                 name="ret"
                 value={formData.ret}
                 onChange={handleChange}
-                placeholder="Return Date (e.g. YYYYDDMM)"
+                placeholder="Return Date (e.g. YYYYMMDD)"
                 required
             />
 

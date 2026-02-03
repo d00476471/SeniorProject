@@ -11,10 +11,26 @@ driveResults = []
 
 def flightSearch(destination: str, max_price: int, depart: int, ret: int):
     print(f"Looking for flights from {destination} under ${max_price}")
-    airportCode = locationLookup.getNearestAirport(destination)
-    results = flightLookup.lookupRequest(airportCode, max_price, depart, ret)
-    flightResults.clear()
-    flightResults.extend(results)
+
+    for attempt in range(5):
+        airportCode = locationLookup.getNearestAirport(destination)
+        try:
+            results = flightLookup.lookupRequest(airportCode, max_price, depart, ret)
+            if not results or len(results) == 0:
+                print(f"No flights found for {airportCode}. Deleting and retrying")
+                locationLookup.removeBadAirport(airportCode)
+                continue 
+            
+            flightResults.clear()
+            flightResults.extend(results)
+            print(f"Found {len(results)} flights from {airportCode}")
+            return 
+
+        except Exception as e:
+            print(f"Error with airport {airportCode}: {e}")
+            locationLookup.removeBadAirport(airportCode)
+
+    print("Could not find any valid flights after 3 attempts.")
 
 def driveSearch(destination: str):
     print(f"Looking for drives from {destination}")
@@ -65,5 +81,5 @@ def add_request(req: Request):
 
 if __name__ == "__main__":
     #flightSearch("St. George", 2000, 20260202, 20260209)
-    #driveSearch("St. George")
+    #driveSearch("Salem Oregon")
     uvicorn.run(app, host="0.0.0.0", port=8000)

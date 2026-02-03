@@ -6,7 +6,7 @@ import requests
 df = pd.read_csv('airports.csv')
 df_major = df[df['iata'].str.match(r'^[A-Z]{3}$', na=False)].copy()
 
-def getDrivingDestinations(startLocation: str, maxHours: int = 6):
+def getDrivingDestinations(startLocation: str):
     geolocator = Nominatim(user_agent="travelApp")
 
     location = geolocator.geocode(startLocation)
@@ -26,7 +26,7 @@ def getDrivingDestinations(startLocation: str, maxHours: int = 6):
         "lng": startLon,
         "radius": radiusKm,
         "cities": "cities15000",
-        "maxRows": 30,
+        "maxRows": 200,
         "username": username
     }
 
@@ -76,3 +76,17 @@ def getNearestAirport(cityName):
     print(f"Nearest airport to {cityName} is {nearestAirport['name']} ({nearestAirport['iata']}) - {nearestAirport['distance']:.1f} miles away")
 
     return nearestAirport['iata']
+
+def removeBadAirport(iata):
+    
+    global df_major
+
+    df_major = df_major[df_major['iata'] != iata]
+
+    try:
+        full_df = pd.read_csv('airports.csv')
+        full_df = full_df[full_df['iata'] != iata]
+        full_df.to_csv('airports.csv', index=False)
+        print("airports.csv updated.")
+    except Exception as e:
+        print(f"Failed to update CSV: {e}")

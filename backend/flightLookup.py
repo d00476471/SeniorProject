@@ -1,9 +1,10 @@
 import os
 import json
 import requests
+import locationLookup
 api_key = os.getenv('SERPAPI_API_KEY')
 
-def lookupRequest(destination: str, max_price: int, depart: int, ret: int):
+def lookupRequest(airportCode: str, max_price: int, depart: int, ret: int):
     depart_str = str(depart)
     ret_str = str(ret)
     # format date from int into string that can be fed into api search
@@ -13,7 +14,7 @@ def lookupRequest(destination: str, max_price: int, depart: int, ret: int):
     params = {
         "api_key": api_key,
         "engine": "google_travel_explore", 
-        "departure_id": destination, 
+        "departure_id": airportCode, 
         "max_price": max_price,
         "outbound_date": formatted_depart,
         "return_date": formatted_ret,
@@ -38,6 +39,7 @@ def lookupRequest(destination: str, max_price: int, depart: int, ret: int):
                 }
                 flight_results.append(destination)
                     
+    print(flight_results)
     return flight_results
 
 def hotelSearch(destination: str, max_price: int, depart: int, ret: int):
