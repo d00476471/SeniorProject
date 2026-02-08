@@ -40,7 +40,7 @@ const AddRequestForm = ({ addRequest }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px'}}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px' }}>
             <h3>Request a New Trip</h3>
 
             <input

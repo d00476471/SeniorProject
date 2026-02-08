@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
+from datetime import datetime   
 
 flightResults = []
 driveResults = []
@@ -38,12 +39,26 @@ def driveSearch(destination: str):
     driveResults.clear()
     driveResults.extend(results)
 
+def hotelSearch(destination: str, max_price: int, depart: int, ret: int):
+    print(f"looking for hotels in {destination}")
+    results = flightLookup.hotelSearch(destination, max_price, depart, ret)
+    return results
+
 
 class Request(BaseModel):
     location: str
     budget: int
     depart: int
     ret: int
+
+class detailsRequest(BaseModel):
+    location: str
+    transportCost: int
+    transportType: str
+    depart: str
+    ret: str
+    budget: int
+
 
 app = FastAPI()
 
@@ -59,25 +74,51 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-temp_db = []
+#temp_db = []
 
 @app.get(path="/flights")
 def get_flights():
-    print(flightResults)
+    #print(flightResults)
     return flightResults
 
 @app.get(path="/drives")
 def get_drives():
-    print(driveResults)
+    #print(driveResults)
     return driveResults
 
 @app.post(path="/requests", response_model=Request)
 def add_request(req: Request):
-    temp_db.append(req)
+    #temp_db.append(req)
     # when we get information from the user we can call my search apis
     driveSearch(req.location)
     flightSearch(req.location, req.budget, req.depart, req.ret)
     return req
+
+@app.post(path='/tripDetails')
+def add_request(req: detailsRequest):
+    #Calculate the trip duration
+    dateFormat = "%Y-%m-%d"
+    startDate = datetime.strptime(req.depart, dateFormat).date()
+    endDate = datetime.strptime(req.ret, dateFormat).date()
+    duration = endDate - startDate
+    duration = duration.days
+
+    remainingBudget = req.budget - req.transportCost
+    maxNightly = int(remainingBudget / duration)
+
+    hotels = hotelSearch(req.location, maxNightly, req.depart, req.ret)   
+
+    print(hotels)
+
+    return {
+        "destination": req.location,
+        "transport_cost": req.transportCost,
+        "transport_type": req.transportType,
+        "remaining_budget": remainingBudget,
+        "hotel_options": hotels,
+        "duration": duration
+    }
+    
 
 if __name__ == "__main__":
     #flightSearch("St. George", 2000, 20260202, 20260209)

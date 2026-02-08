@@ -1,17 +1,17 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Requests from './components/Requests';
+import TripComparison from './components/TripComparison';
 
 const App = () => {
     return (
         <div className="App">
-            <header className="App-header">
-                <h1> Welcome to Budget Bound!</h1>
-            </header>
-            <main>
-                <Requests />
-            </main>
-        </div>
+            <Routes>
+                <Route path="/" element={<Requests />} />
+                <Route path="/compare" element={<TripComparison />} />
+            </Routes>
+        </div >
     );
 };
 

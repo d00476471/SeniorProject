@@ -39,11 +39,14 @@ def lookupRequest(airportCode: str, max_price: int, depart: int, ret: int):
                 }
                 flight_results.append(destination)
                     
-    print(flight_results)
+    #print(flight_results)
     return flight_results
 
 def hotelSearch(destination: str, max_price: int, depart: int, ret: int):
     print(f"Searching hotels in {destination} under ${max_price}/night...")
+
+    #formatted_depart = f"{depart_str[:4]}-{depart_str[4:6]}-{depart_str[6:8]}"
+    #formatted_ret = f"{ret_str[:4]}-{ret_str[4:6]}-{ret_str[6:8]}"
     
     params = {
         "api_key": api_key,
@@ -53,13 +56,15 @@ def hotelSearch(destination: str, max_price: int, depart: int, ret: int):
         "check_out_date": ret,
         "currency": "USD",
         "max_price": max_price,
-        "sort_by": 8, # Can change sorting order or leave it out completely
+        #"sort_by": 8, # Can change sorting order or leave it out completely
                       # 3 - Lowest price | 8 - Highest rating | 13 - Most reviewed
     }
 
     try:
         search = requests.get("https://serpapi.com/search", params=params)
         results = search.json()
+
+        print(results)
         
         hotels = []
 

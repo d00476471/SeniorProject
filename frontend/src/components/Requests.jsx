@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from "../api.js";
 import AddRequestForm from './AddRequestForm';
 
 const Requests = () => {
+    const navigate = useNavigate();
+
     const [flights, setFlights] = useState([]);
     const [drives, setDrives] = useState([]);
     const [selectedTrips, setSelectedTrips] = useState([]);
@@ -39,11 +42,8 @@ const Requests = () => {
     };
 
     const toggleSelection = (trip, type) => {
-
         const tripId = `${type}-${trip.city_name}`;
-        
         const isSelected = selectedTrips.some(t => t.id === tripId);
-
         if (isSelected) {
             //remove trip
             setSelectedTrips(selectedTrips.filter(t => t.id !== tripId));
@@ -55,13 +55,17 @@ const Requests = () => {
                 country: trip.country || "USA",
                 transport_type: type,
                 transport_cost: type === 'flight' ? (trip.price || trip.flight_price) : 0,
-                depart_date: "2026-06-01", 
+                depart_date: "2026-06-01",
                 return_date: "2026-06-06",
-                budget: 1000 
+                budget: 1000
             };
             setSelectedTrips([...selectedTrips, newTrip]);
         }
     };
+
+    const goToComparison = () => {
+        navigate('/compare', { state: { trips: selectedTrips } });
+    }
 
     return (
         <div>
@@ -71,8 +75,15 @@ const Requests = () => {
                 <AddRequestForm addRequest={addRequest} />
             </div>
 
-            <div style={styles.mainLayout}>
+            {selectedTrips.length > 0 && (
+                <div style={styles.fabContainer}>
+                    <button style={styles.fabButton} onClick={goToComparison}>
+                        Compare {selectedTrips.length} Trips ➔
+                    </button>
+                </div>
+            )}
 
+            <div style={styles.mainLayout}>
                 {/* drive results */}
                 <div style={styles.column}>
                     <h3 style={styles.columnHeader}>Drives</h3>
@@ -84,15 +95,15 @@ const Requests = () => {
                             const isSelected = selectedTrips.some(t => t.id === `drive-${drive.city_name}`);
 
                             return (
-                                <div 
-                                    key={index} 
+                                <div
+                                    key={index}
                                     style={{
-                                        ...styles.card, 
+                                        ...styles.card,
                                         border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'
-                                    }} 
+                                    }}
                                     onClick={() => toggleSelection(drive, 'drive')}
                                 >
-                                    <div style={{display:'flex', justifyContent:'space-between'}}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <h3>{drive.city_name}</h3>
                                         {/* Now 'isSelected' is defined and will work here */}
                                         <input type="checkbox" checked={isSelected} readOnly />
@@ -124,7 +135,7 @@ const Requests = () => {
                             const isSelected = selectedTrips.some(t => t.id === `flight-${flight.city_name}`);
 
                             return (
-                                <div key={index} style={{...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd'}} onClick={() => toggleSelection(flight, 'flight')}>
+                                <div key={index} style={{ ...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd' }} onClick={() => toggleSelection(flight, 'flight')}>
                                     <h3>{flight.city_name || flight.segments?.[0]?.arrival_city}</h3>
                                     <input type="checkbox" checked={isSelected} readOnly />
 
