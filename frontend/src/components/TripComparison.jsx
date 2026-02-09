@@ -12,7 +12,6 @@ const CompareTrips = () => {
 
     useEffect(() => {
         const fetchAllDetails = async () => {
-            // We use Promise.all to fetch all hotel data in parallel
             const promises = initialTrips.map(trip =>
                 api.post('/tripDetails', {
                     location: trip.destination,
@@ -47,7 +46,7 @@ const CompareTrips = () => {
                 {detailedTrips.map((trip, index) => (
                     <div key={index} style={styles.summaryCard}>
                         <h2 style={{ color: '#1976d2' }}>{trip.destination}</h2>
-                        <span style={styles.badge}>{trip.transport_type}</span>
+                        <span>{trip.transport_type}</span>
 
                         <div style={styles.costSection}>
                             <p>Transport: <strong>${trip.transport_cost}</strong></p>
@@ -64,12 +63,10 @@ const CompareTrips = () => {
 
                                         <h4 style={{ margin: '0 0 5px 0' }}>{hotel.name}</h4>
 
-
                                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                             <span style={{ color: 'green', fontWeight: 'bold' }}>
                                                 {hotel.price ? `${hotel.price}` : 'Price N/A'} / night
                                             </span>
-
 
                                             {hotel.rating && (
                                                 <span>⭐ {hotel.rating}</span>
@@ -101,14 +98,6 @@ const styles = {
         padding: '20px',
         backgroundColor: '#fff',
         boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-    },
-    badge: {
-        backgroundColor: '#e3f2fd',
-        color: '#1565c0',
-        padding: '5px 10px',
-        borderRadius: '15px',
-        fontSize: '0.8rem',
-        fontWeight: 'bold'
     },
     costSection: {
         marginTop: '20px',
