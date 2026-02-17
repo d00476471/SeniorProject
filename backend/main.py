@@ -48,8 +48,8 @@ def hotelSearch(destination: str, max_price: int, depart: int, ret: int):
 class Request(BaseModel):
     location: str
     budget: int
-    depart: int
-    ret: int
+    depart: str
+    ret: str
 
 class detailsRequest(BaseModel):
     location: str

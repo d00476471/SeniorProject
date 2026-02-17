@@ -5,6 +5,7 @@ import requests
 import googlemaps
 from datetime import datetime
 import os
+import random
 
 maps_api_key = os.getenv('GOOGLE_MAPS_API_KEY')
 
@@ -37,7 +38,7 @@ def getDrivingDestinations(startLocation: str):
 
     response = requests.get(url, params=params).json()
 
-    drivingDestinations = []
+    candidates = []
 
     if "geonames" in response:
         for city in response["geonames"]:
@@ -46,19 +47,27 @@ def getDrivingDestinations(startLocation: str):
             city_coords = (city['lat'], city['lng'])
             start_coords = (startLat, startLon)
             dist = geodesic(start_coords, city_coords).kilometers
-            
             # dont show cities that are too close and check that they are within the radius
             if 100 < dist <= radiusKm:
-                endLocation = city["name"] + city["adminName1"]
-                driveTime = calculateDriveTime(startLocation, endLocation)
-                drivingDestinations.append({
-                    "city_name": city["name"],
-                    "country": city["countryName"],
-                    "state": city["adminName1"],
-                    "distance_km": driveTime[0],
-                    "drive_time_hours": driveTime[1],
-                    "transport_mode": "car"
-                })
+                candidates.append(city)
+
+
+        if len(candidates) > 20:
+            candidates = random.sample(candidates, 20)
+    
+        drivingDestinations = []
+
+        for city in candidates:
+            endLocation = city["name"] + city["adminName1"]
+            driveTime = calculateDriveTime(startLocation, endLocation)
+            drivingDestinations.append({
+                "city_name": city["name"],
+                "country": city["countryName"],
+                "state": city["adminName1"],
+                "distance_km": driveTime[0],
+                "drive_time_hours": driveTime[1],
+                "transport_mode": "car"
+            })
 
     return drivingDestinations
 
@@ -78,9 +87,7 @@ def getNearestAirport(cityName):
         return geodesic(userCoords, airportCoords).miles
 
     df_major['distance'] = df_major.apply(calculate_distance, axis=1)
-    
     nearestAirport = df_major.loc[df_major['distance'].idxmin()]
-    
     print(f"Nearest airport to {cityName} is {nearestAirport['name']} ({nearestAirport['iata']}) - {nearestAirport['distance']:.1f} miles away")
 
     return nearestAirport['iata']

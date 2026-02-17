@@ -28,8 +28,8 @@ const AddRequestForm = ({ addRequest }) => {
             const payload = {
                 location: formData.location,
                 budget: parseInt(formData.budget),
-                depart: parseInt(formData.depart),
-                ret: parseInt(formData.ret)
+                depart: formData.depart,
+                ret: formData.ret
             };
 
             addRequest(payload);
@@ -62,20 +62,18 @@ const AddRequestForm = ({ addRequest }) => {
             />
 
             <input
-                type="number"
+                type="date"
                 name="depart"
                 value={formData.depart}
                 onChange={handleChange}
-                placeholder="Departure Date (e.g. YYYYMMDD)"
                 required
             />
 
             <input
-                type="number"
+                type="date"
                 name="ret"
                 value={formData.ret}
                 onChange={handleChange}
-                placeholder="Return Date (e.g. YYYYMMDD)"
                 required
             />
 
