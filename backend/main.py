@@ -123,4 +123,5 @@ def add_request(req: detailsRequest):
 if __name__ == "__main__":
     #flightSearch("St. George", 2000, 20260202, 20260209)
     #driveSearch("Salem Oregon")
+    #locationLookup.calculateDriveTime("St. George", "Las Vegas")
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -2,6 +2,7 @@ import os
 import json
 import requests
 import locationLookup
+
 api_key = os.getenv('SERPAPI_API_KEY')
 
 def lookupRequest(airportCode: str, max_price: int, depart: int, ret: int):

@@ -69,7 +69,7 @@ const Requests = () => {
 
     return (
         <div>
-            <h2>Trip Search Results</h2>
+            <h1>Welcome to BudgetBound!</h1>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
                 <AddRequestForm addRequest={addRequest} />
@@ -105,17 +105,16 @@ const Requests = () => {
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <h3>{drive.city_name}</h3>
-                                        {/* Now 'isSelected' is defined and will work here */}
                                         <input type="checkbox" checked={isSelected} readOnly />
                                     </div>
 
                                     <div style={styles.row}>
-                                        <span style={styles.driveTime}>{drive.drive_time_hours} Hours</span>
-                                        <span style={styles.airline}>{drive.distance_km} km</span>
+                                        <span style={styles.driveTime}>{drive.drive_time_hours}</span>
+                                        <span style={styles.airline}>{drive.distance_km}</span>
                                     </div>
                                     <div style={styles.details}>
+                                        <p><strong>State:</strong> {drive.state}</p>
                                         <p><strong>Country:</strong> {drive.country}</p>
-                                        <p><strong>Mode:</strong> {drive.transport_mode}</p>
                                     </div>
                                 </div>
                             );
@@ -136,9 +135,11 @@ const Requests = () => {
 
                             return (
                                 <div key={index} style={{ ...styles.card, border: isSelected ? '2px solid #2196f3' : '1px solid #ddd' }} onClick={() => toggleSelection(flight, 'flight')}>
-                                    <h3>{flight.city_name || flight.segments?.[0]?.arrival_city}</h3>
-                                    <input type="checkbox" checked={isSelected} readOnly />
 
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <h3>{flight.city_name || flight.segments?.[0]?.arrival_city}</h3>
+                                        <input type="checkbox" checked={isSelected} readOnly />
+                                    </div>
 
                                     <div style={styles.row}>
                                         <span style={styles.price}>${price}</span>

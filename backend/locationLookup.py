@@ -2,12 +2,17 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 import requests
+import googlemaps
+from datetime import datetime
+import os
+
+maps_api_key = os.getenv('GOOGLE_MAPS_API_KEY')
 
 df = pd.read_csv('airports.csv')
 df_major = df[df['iata'].str.match(r'^[A-Z]{3}$', na=False)].copy()
 
 def getDrivingDestinations(startLocation: str):
-    geolocator = Nominatim(user_agent="travelApp")
+    geolocator = Nominatim(user_agent="DriveLookup")
 
     location = geolocator.geocode(startLocation)
     if not location:
@@ -44,18 +49,21 @@ def getDrivingDestinations(startLocation: str):
             
             # dont show cities that are too close and check that they are within the radius
             if 100 < dist <= radiusKm:
+                endLocation = city["name"] + city["adminName1"]
+                driveTime = calculateDriveTime(startLocation, endLocation)
                 drivingDestinations.append({
                     "city_name": city["name"],
                     "country": city["countryName"],
-                    "distance_km": round(dist),
-                    "drive_time_hours": round(dist / 105, 1),
+                    "state": city["adminName1"],
+                    "distance_km": driveTime[0],
+                    "drive_time_hours": driveTime[1],
                     "transport_mode": "car"
                 })
 
     return drivingDestinations
 
 def getNearestAirport(cityName):
-    geolocator = Nominatim(user_agent="travelApp")
+    geolocator = Nominatim(user_agent="AirportLookup")
     
     location = geolocator.geocode(cityName)
     
@@ -90,3 +98,22 @@ def removeBadAirport(iata):
         print("airports.csv updated.")
     except Exception as e:
         print(f"Failed to update CSV: {e}")
+
+def calculateDriveTime(startCity, endCity):
+    gmaps = googlemaps.Client(key=maps_api_key)
+
+    distance_result = gmaps.distance_matrix(
+        origins=startCity,
+        destinations=endCity,
+        mode="driving",
+    )
+
+    if distance_result["rows"][0]["elements"][0]["status"] == "OK":
+        
+        distance = distance_result["rows"][0]["elements"][0]["distance"]["text"]
+        duration = distance_result["rows"][0]["elements"][0]["duration"]["text"]
+        
+        return [distance, duration]
+    
+    else:
+        return ["N/A", "N/A"]
