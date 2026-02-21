@@ -77,7 +77,7 @@ const AddRequestForm = ({ addRequest }) => {
                 required
             />
 
-            <button type="submit">Add Request</button>
+            <button className="submit" type="submit">Add Request</button>
         </form>
     );
 };

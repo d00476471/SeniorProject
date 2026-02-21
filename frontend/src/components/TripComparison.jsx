@@ -9,6 +9,7 @@ const CompareTrips = () => {
 
     const [detailedTrips, setDetailedTrips] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedHotels, setSelectedHotels] = useState({});
 
     useEffect(() => {
         const fetchAllDetails = async () => {
@@ -21,7 +22,7 @@ const CompareTrips = () => {
                     ret: trip.return_date,
                     budget: trip.budget
                 })
-                    .then(res => ({ ...res.data, status: 'success' }))
+                    .then(res => ({ ...trip, ...res.data, status: 'success' }))
                     .catch(err => ({ ...trip, status: 'error' }))
             );
 
@@ -35,81 +36,86 @@ const CompareTrips = () => {
         }
     }, []);
 
+    const handleHotelSelect = (tripIndex, hotelIndex) => {
+        setSelectedHotels(prev => ({
+            ...prev,
+            [tripIndex]: hotelIndex
+        }));
+    };
+
+    const calculateTotal = (trip, hotelIndex) => {
+        const hotel = trip.hotel_options[hotelIndex];
+        if (!hotel || !hotel.price) return "N/A";
+
+        // calculate nights
+        const start = new Date(trip.depart_date);
+        const end = new Date(trip.return_date);
+        const nights = Math.max(1, Math.ceil((end - start) / (1000 * 60 * 60 * 24))) || 1;
+
+        // turn everything into numbers
+        const hotelCost = Number(String(hotel.price).replace(/[^0-9.-]+/g, ""));
+        const transportCost = Number(String(trip.transport_cost).replace(/[^0-9.-]+/g, ""));
+
+        const total = transportCost + (hotelCost * nights);
+        return total.toFixed(2);
+    };
+
     if (loading) return <h2>Calculating Hotel Costs for {initialTrips.length} trips...</h2>;
 
     return (
-        <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-            <button onClick={() => navigate(-1)}>← Back to Search</button>
+        <div className="compare-page-container">
+            <button onClick={() => navigate(-1)} className="compare-button" style={{ marginBottom: '20px' }}>← Back to Search</button>
             <h1>Trip Comparison</h1>
 
-            <div style={styles.comparisonGrid}>
-                {detailedTrips.map((trip, index) => (
-                    <div key={index} style={styles.summaryCard}>
-                        <h2 style={{ color: '#1976d2' }}>{trip.destination}</h2>
+            <div className="comparison-grid">
+                {detailedTrips.map((trip, tripIndex) => (
+                    <div key={tripIndex} className="summary-card">
+                        <h2 className="destination-title">{trip.destination}</h2>
                         <span>{trip.transport_type}</span>
 
-                        <div style={styles.costSection}>
+                        <div className="cost-section">
                             <p>Transport: <strong>${trip.transport_cost}</strong></p>
 
                             {trip.hotel_options && trip.hotel_options.length > 0 ? (
-                                trip.hotel_options.map((hotel, index) => (
+                                trip.hotel_options.map((hotel, hotelIndex) => {
+                                    const isSelected = selectedHotels[tripIndex] === hotelIndex;
 
-                                    <div key={index} className="hotel-item" style={{
-                                        border: '1px solid #ddd',
-                                        padding: '10px',
-                                        marginBottom: '10px',
-                                        borderRadius: '5px'
-                                    }}>
+                                    return (
+                                        <div
+                                            key={hotelIndex}
+                                            className={`hotel-item ${isSelected ? 'selected' : ''}`}
+                                            onClick={() => handleHotelSelect(tripIndex, hotelIndex)}
+                                        >
+                                            <h4 className="hotel-name">{hotel.name}</h4>
 
-                                        <h4 style={{ margin: '0 0 5px 0' }}>{hotel.name}</h4>
+                                            <div className="hotel-details">
+                                                <span className="hotel-price">
+                                                    {hotel.price ? `${hotel.price}` : 'Price N/A'} / night
+                                                </span>
 
-                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                            <span style={{ color: 'green', fontWeight: 'bold' }}>
-                                                {hotel.price ? `${hotel.price}` : 'Price N/A'} / night
-                                            </span>
-
-                                            {hotel.rating && (
-                                                <span>⭐ {hotel.rating}</span>
-                                            )}
+                                                {hotel.rating && (
+                                                    <span>⭐ {hotel.rating.toFixed(1)}</span>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))
+                                    );
+                                })
                             ) : (
-                                <p style={{ color: 'red' }}>No hotels found within remaining budget.</p>
+                                <p className="error-text">No hotels found within remaining budget.</p>
                             )}
+
+                            {selectedHotels[tripIndex] !== undefined && (
+                                <div className="total-trip-price">
+                                    Total Trip Cost: ${calculateTotal(trip, selectedHotels[tripIndex])}
+                                </div>
+                            )}
+
                         </div>
                     </div>
                 ))}
             </div>
         </div>
     );
-};
-
-const styles = {
-    comparisonGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '20px',
-        marginTop: '20px'
-    },
-    summaryCard: {
-        border: '1px solid #ddd',
-        borderRadius: '10px',
-        padding: '20px',
-        backgroundColor: '#fff',
-        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-    },
-    costSection: {
-        marginTop: '20px',
-        paddingTop: '20px',
-        borderTop: '1px solid #eee'
-    },
-    totalPrice: {
-        fontSize: '1.4rem',
-        fontWeight: 'bold',
-        color: '#2e7d32',
-        marginTop: '10px'
-    }
 };
 
 export default CompareTrips;
