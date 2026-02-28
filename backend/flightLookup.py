@@ -7,7 +7,6 @@ api_key = os.getenv('SERPAPI_API_KEY')
 
 def lookupRequest(airportCode: str, max_price: int, depart: str, ret: str):
 
-    print(depart)
     params = {
         "api_key": api_key,
         "engine": "google_travel_explore", 
@@ -21,7 +20,7 @@ def lookupRequest(airportCode: str, max_price: int, depart: str, ret: str):
     response = search.json()
 
     flight_results = []
-    print(flight_results)
+    print(response)
 
     if "destinations" in response:
             for item in response["destinations"]:

@@ -908,6 +908,7 @@ AXS,Altus Municipal,Altus,OK,USA,34.69878194,-99.3381
 AXV,Neil Armstrong,Wapakoneta,OH,USA,40.49338889,-84.29894444
 AXX,Angel Fire,Angel Fire,NM,USA,36.42240972,-105.2892967
 AYS,Waycross-Ware County,Waycross,GA,USA,31.24905556,-82.39530556
+AZC,Colorado City Municipal,Colorado City,AZ,USA,36.95994444,-113.0138889
 AZE,Hazelhurst,Hazelhurst,GA,USA,31.88465639,-82.64738778
 AZO,Kalamazoo County,Kalamazoo,MI,USA,42.234875,-85.5520575
 B01,Granville,Granville,NY,USA,43.42507111,-73.26205306
@@ -925,6 +926,7 @@ BBD,Curtis,Brady,TX,USA,31.17816667,-99.32463889
 BBP,Marlboro County,Bennettsville,SC,USA,34.62170861,-79.73435944
 BBW,Broken Bow Municipal,Broken Bow,NE,USA,41.43645056,-99.64216861
 BCB,Virginia Tech,Blacksburg,VA,USA,37.20782361,-80.40832778
+BCE,Bryce Canyon,Bryce Canyon,UT,USA,37.70637111,-112.1454725
 BCK,Black River Falls Area,Black River Falls,WI,USA,44.25073861,-90.85528028
 BCT,Boca Raton,Boca Raton,FL,USA,26.37848667,-80.10769667
 BCV,Birchwood,Birchwood,AK,USA,61.41612444,-149.50888
@@ -1015,7 +1017,6 @@ BTY,Beatty,Beatty,NV,USA,36.86105722,-116.7870036
 BUB,Cram,Burwell,NE,USA,41.77669444,-99.14975
 BUF,Buffalo Niagara Intl,Buffalo,NY,USA,42.94052472,-78.73216667
 BUM,Butler Memorial,Butler,MO,USA,38.28977028,-94.34012694
-BUR,Burbank-Glendale-Pasadena,Burbank,CA,USA,34.20061917,-118.3584969
 BUY,Burlington Municipal,Burlington,NC,USA,36.04854333,-79.47488694
 BVI,Beaver County,Beaver Falls,PA,USA,40.77248083,-80.39142556
 BVK,Buckland,Buckland,AK,USA,65.98228611,-161.1519778
@@ -1076,6 +1077,7 @@ CCO,Newnan-Coweta County,Newnan,GA,USA,33.31208333,-84.77027778
 CCR,Buchanan,Concord,CA,USA,37.98965639,-122.0568972
 CCY,Charles City Municipal,Charles City,IA,USA,43.07260861,-92.61077833
 CDB,Cold Bay,Cold Bay,AK,USA,55.20559972,-162.7242628
+CDC,Cedar City Muni,Cedar City,UT,USA,37.70097028,-113.098575
 CDH,Harrell,Camden,AR,USA,33.62279917,-92.76339528
 CDI,Cambridge Municipal,Cambridge,OH,USA,39.97504417,-81.57759528
 CDK,George T Lewis,Cedar Key,FL,USA,29.137745,-83.04984361
@@ -1167,7 +1169,6 @@ COT,Cotulla-Lasalle County,Cotulla,TX,USA,28.45825583,-99.22016389
 COU,Columbia Regional,Columbia,MO,USA,38.81809306,-92.21962917
 CPC,Columbus County Municipal,Whiteville,NC,USA,34.27287278,-78.71499278
 CPK,Chesapeake Municipal,Norfolk,VA,USA,36.66561833,-76.32066389
-CPM,Compton/Woodley,Compton,CA,USA,33.89001611,-118.2436831
 CPR,Natrona County Intl,Casper,WY,USA,42.90835556,-106.4644661
 CPS,St. Louis Downtown,Cahokia/St. Louis,IL,USA,38.57072444,-90.15622111
 CPX,Benjamin Rivera Noriega,Isla De Culebra,PR,USA,18.31328917,-65.30432444
@@ -1355,7 +1356,6 @@ ECG,Elizabeth City CG Air Station/Municipal,Elizabeth City,NC,USA,36.26057417,-7
 ECS,Mondell,Newcastle,WY,USA,43.88545056,-104.3179178
 EDE,Edenton Municipal,Edenton,NC,USA,36.027735,-76.56709333
 EDN,Enterprise Municipal,Enterprise,AL,USA,31.29972222,-85.89986111
-EED,Needles,Needles,CA,USA,34.76619444,-114.6232931
 EEK,Eek,Eek,AK,USA,60.21590417,-162.0056092
 EEN,Dillant-Hopkins,Keene,NH,USA,42.89839944,-72.27078111
 EEO,Meeker,Meeker,CO,USA,40.04886222,-107.8859067
@@ -1394,7 +1394,6 @@ ELY,Ely Arpt (Yelland),Ely,NV,USA,39.29969444,-114.8418889
 ELZ,Wellsville Muni Tarantine,Wellsville,NY,USA,42.10951194,-77.99194806
 EMM,Kemmerer Municipal,Kemmerer,WY,USA,41.82494611,-110.5590586
 EMP,Emporia Municipal,Emporia,KS,USA,38.33211111,-96.19116667
-EMT,El Monte,El Monte,CA,USA,34.08600889,-118.0348453
 EMV,Emporia-Greensville Regional,Emporia,VA,USA,36.68691667,-77.48280556
 ENA,Kenai Municipal,Kenai,AK,USA,60.572,-151.2475278
 ENL,Centralia Municipal,Centralia,IL,USA,38.51479889,-89.09217944
@@ -1431,7 +1430,6 @@ EVY,Summit Airpark,Middletown,DE,USA,39.52038889,-75.72044444
 EWB,New Bedford Municipal,New Bedford,MA,USA,41.67614167,-70.95694167
 EWK,Newton-City-County,Newton,KS,USA,38.05710528,-97.27522861
 EWN,Craven County Regional,New Bern,NC,USA,35.07297222,-77.04294444
-EWR,Newark Intl,Newark,NJ,USA,40.69249722,-74.16866056
 EWU,Newtok,Newtok,AK,USA,60.93865417,-164.6412147
 EXI,Excursion Inlet SPB,Excursion Inlet,AK,USA,58.42049861,-135.4490328
 EXX,Davidson County,Lexington,NC,USA,35.78114028,-80.30378194
@@ -1711,7 +1709,6 @@ HGR,Hagerstown Regional-Richard Henson,Hagerstown,MD,USA,39.70794444,-77.7295
 HHF,Hemphill County,Canadian,TX,USA,35.89530778,-100.4036397
 HHG,Huntington Municipal,Huntington,IN,USA,40.85299,-85.45941917
 HHH,Hilton Head,,,USA,32.224384,-80.697629
-HHR,Jack Northrop Field/Hawthorne Municipal,Hawthorne,CA,USA,33.92283972,-118.3351872
 HHW,Stan Stamper Municipal,Hugo,OK,USA,34.03482556,-95.54190611
 HI01,Princeville,Hanalei,HI,USA,22.20919,-159.4455339
 HIB,Chisholm-Hibbing,Hibbing,MN,USA,47.38659917,-92.83899333
@@ -1844,9 +1841,7 @@ IEM,Whittier,Whittier,AK,USA,60.7772125,-148.7215775
 IEN,Pine Ridge,Pine Ridge,SD,USA,43.02257694,-102.5110728
 IER,Natchitoches Municipal,Natchitoches,LA,USA,31.73572,-93.09913639
 IFA,Iowa Falls Municipal,Iowa Falls,IA,USA,42.47078639,-93.26995361
-IFP,Laughlin/Bullhead International,Bullhead City,AZ,USA,35.15738889,-114.5595278
 IGG,Igiugig,Igiugig,AK,USA,59.32373528,-155.9032733
-IGM,Kingman,Kingman,AZ,USA,35.25947222,-113.9380556
 IGQ,Lansing Municipal,Chicago/Lansing,IL,USA,41.53988889,-87.53216667
 IGT,Nightmute,Nightmute,AK,USA,60.47032722,-164.6856414
 IIB,Independence Municipal,Independence,IA,USA,42.45359833,-91.94761833
@@ -1923,8 +1918,6 @@ JNU,Juneau International,Juneau,AK,USA,58.35496194,-134.5762764
 JNX,Johnston County,Smithfield,NC,USA,35.54094139,-78.39032944
 JOT,Joliet Park District,Chicago/Joliet,IL,USA,41.51805833,-88.17525583
 JQF,Concord Regional,Concord,NC,USA,35.38520694,-80.70971389
-JRA,Port Authority-W 30th St Midtown Heliport,New York,NY,USA,40.75454583,-74.00708389
-JRB,Downtown Manhattan/Wall St. Heliport,New York,NY,USA,40.70121361,-74.00902833
 JRF,Kalaeloa (John Rodgers),Kapolei,HI,USA,21.30735389,-158.0703017
 JSO,Jacksonville-Cherokee County,Jacksonville,TX,USA,31.86933667,-95.21739028
 JST,Johnstown-Cambria Cty,Johnstown,PA,USA,40.31611111,-78.83394444
@@ -1983,6 +1976,7 @@ KKB,Kitoi Bay SPB,Kitoi Bay,AK,USA,58.19094611,-152.3704875
 KLG,Kalskag,Kalskag,AK,USA,61.53627389,-160.3413306
 KLL,Levelock,Levelock,AK,USA,59.11816472,-156.8652169
 KLS,Kelso-Longview,Kelso,WA,USA,46.118,-122.8983889
+KNB,Kanab Muni,Kanab,UT,USA,37.01110583,-112.5311936
 KNW,Stuyahok,New Stuyahok,AK,USA,59.44955333,-157.3271908
 KOA,Kona International At Keahole,Kailua/Kona,HI,USA,19.73876583,-156.0456314
 KPB,Point Baker SPB,Point Baker,AK,USA,56.35185972,-133.6225864
@@ -2030,9 +2024,7 @@ LAL,Lakeland Linder Regional,Lakeland,FL,USA,27.98891667,-82.01855556
 LAM,Los Alamos,Los Alamos,NM,USA,35.87980194,-106.2694153
 LAN,Capital City,Lansing,MI,USA,42.7787,-84.58735806
 LAR,Laramie Regional,Laramie,WY,USA,41.31205,-105.6749864
-LAS,McCarran International,Las Vegas,NV,USA,36.08036111,-115.1523333
 LAW,Lawton-Ft Sill Regional,Lawton,OK,USA,34.56771444,-98.41663667
-LAX,Los Angeles International,Los Angeles,CA,USA,33.94253611,-118.4080744
 LBB,Lubbock International,Lubbock,TX,USA,33.66363889,-101.8227778
 LBE,Arnold Palmer Regional,Latrobe,PA,USA,40.27594,-79.40479722
 LBF,North Platte Regional,North Platte,NE,USA,41.12621194,-100.6836542
@@ -2054,7 +2046,6 @@ LEW,Auburn-Lewiston Municipal,Auburn-Lewiston,ME,USA,44.04847278,-70.2835075
 LEX,Blue Grass,Lexington,KY,USA,38.03697222,-84.60538889
 LFK,Lufkin-Angelina County,Lufkin,TX,USA,31.23401389,-94.75
 LFT,Lafayette Regional,Lafayette,LA,USA,30.20527972,-91.987655
-LGA,LaGuardia,New York,NY,USA,40.77724306,-73.87260917
 LGB,Long Beach (Daugherty),Long Beach,CA,USA,33.81772222,-118.1516111
 LGC,LaGrange-Callaway,Lagrange,GA,USA,33.00884694,-85.07260556
 LGD,La Grande/Union County,La Grande,OR,USA,45.29020944,-118.0071108
@@ -2936,6 +2927,7 @@ SGJ,St. Augustine,St. Augustine,FL,USA,29.95925,-81.33975
 SGR,Sugar Land Municipal/Hull,Houston,TX,USA,29.62225306,-95.65652889
 SGS,South St.Paul Municipal,South St Paul,MN,USA,44.85713278,-93.03285389
 SGT,Stuttgart Municipal,Stuttgart,AR,USA,34.60054,-91.57457417
+SGU,St George Muni,St George,UT,USA,37.09058333,-113.5930556
 SGY,Skagway,Skagway,AK,USA,59.46006194,-135.3156636
 SHD,Shenandoah Valley Regional,Staunton/Harrisonburg,VA,USA,38.26384333,-78.89643806
 SHG,Shungnak,Shungnak,AK,USA,66.88916556,-157.1505119
@@ -3083,7 +3075,6 @@ TCY,Tracy Municipal,Tracy,CA,USA,37.68910778,-121.4418172
 TDF,Person County,Roxboro,NC,USA,36.28489194,-78.98422694
 TDO,Toledo-Winlock Ed Carlson Memorial,Toledo,WA,USA,46.47709083,-122.80686
 TDZ,Toledo Metcalf,Toledo,OH,USA,41.56487194,-83.48226139
-TEB,Teterboro,Teterboro,NJ,USA,40.85010139,-74.06083611
 TEL,Perry County Municipal,Tell City,IN,USA,38.01769694,-86.69093
 TEW,Mason Jewett,Mason,MI,USA,42.56576833,-84.42321861
 TEX,Telluride Regional,Telluride,CO,USA,37.95375861,-107.90848

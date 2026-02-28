@@ -13,6 +13,8 @@ driveResults = []
 def flightSearch(destination: str, max_price: int, depart: int, ret: int):
     print(f"Looking for flights from {destination} under ${max_price}")
 
+    print(f"Depart: {depart} Return: {ret}")
+
     for attempt in range(5):
         airportCode = locationLookup.getNearestAirport(destination)
         try:
