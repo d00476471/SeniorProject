@@ -1,7 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from "../api.js";
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import { APIProvider, Map, Marker, useMap } from '@vis.gl/react-google-maps';
+
+const MapBoundsFitter = ({ hotels }) => {
+    const map = useMap();
+
+    useEffect(() => {
+        if (!map || !hotels || hotels.length === 0) return;
+
+        const bounds = new window.google.maps.LatLngBounds();
+        let hasValidPoints = false;
+
+        hotels.forEach((hotel) => {
+            if (hotel.lat && hotel.long) {
+                bounds.extend({ lat: Number(hotel.lat), lng: Number(hotel.long) });
+                hasValidPoints = true;
+            }
+        });
+
+        if (hasValidPoints) {
+
+            map.fitBounds(bounds, 50);
+        }
+    }, [map, hotels]);
+
+    return null;
+};
 
 const HotelMap = ({ hotels }) => {
     if (!hotels || hotels.length === 0) return null;
@@ -13,9 +38,10 @@ const HotelMap = ({ hotels }) => {
     };
 
     return (
-        <div style={{ height: '250px', width: '100%', marginTop: '15px', marginBottom: '15px', borderRadius: '8px', overflow: 'hidden' }}>
+        <div style={{ height: '400px', width: '100%', marginTop: '15px', marginBottom: '15px', borderRadius: '8px', overflow: 'hidden' }}>
             <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
                 <Map defaultZoom={12} defaultCenter={defaultCenter}>
+                    <MapBoundsFitter hotels={hotels} />
                     {hotels.map((hotel, index) => {
                         // Skip if the API didn't return coordinates for some reason
                         if (!hotel.lat || !hotel.long) return null;
@@ -24,7 +50,6 @@ const HotelMap = ({ hotels }) => {
                             <Marker
                                 key={index}
                                 position={{ lat: Number(hotel.lat), lng: Number(hotel.long) }}
-                                // This adds the number (1, 2, 3...) to the red pin!
                                 label={{ text: (index + 1).toString(), color: 'white', fontWeight: 'bold' }}
                                 title={hotel.name}
                             />
@@ -120,7 +145,7 @@ const CompareTrips = () => {
                                             className={`hotel-item ${isSelected ? 'selected' : ''}`}
                                             onClick={() => handleHotelSelect(tripIndex, hotelIndex)}
                                         >
-                                            <h4 className="hotel-name">{hotel.name}</h4>
+                                            <h4 className="hotel-name">{hotelIndex + 1}. {hotel.name}</h4>
 
                                             <div className="hotel-details">
                                                 <span className="hotel-price">
