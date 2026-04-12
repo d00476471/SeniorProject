@@ -174,18 +174,18 @@ const Requests = () => {
         setAiExplanation("");
 
         try {
-            // Gather all unique city names from BOTH flights and drives
+            // getting all unique city names
             const flightCities = flights.map(f => f.city_name || f.segments?.[0]?.arrival_city).filter(Boolean);
             const driveCities = drives.map(d => d.city_name).filter(Boolean);
             const allDestinations = [...new Set([...flightCities, ...driveCities])];
 
-            // Call your backend
+            // call ai backend
             const response = await api.post('/api/filter-destinations', {
                 userPrompt: aiPrompt,
                 destinations: allDestinations
             });
 
-            // Set the matched cities to trigger the UI filter
+            // set matched cities to trigger filtering
             setMatchedCities(response.data.matched_cities);
             setAiExplanation(response.data.explanation);
 
@@ -198,21 +198,16 @@ const Requests = () => {
     };
 
     useEffect(() => {
-        // Did we just arrive from the Home page with new search data?
+        // Did we just arrive from the Home page with new search data
         if (location.state?.triggerNewSearch) {
             hasFired.current = true;
             const newRequestData = location.state.triggerNewSearch;
 
-            // Clear out React state immediately just to be safe
             setFlights([]);
             setDrives([]);
             setAlternatives([]);
 
-            // Fire the actual POST request to your backend!
             addRequest(newRequestData);
-
-            // Wipe the router state clean. 
-            // This prevents the search from re-firing if the user hits the "Refresh" button on their browser.
             navigate('/results', { replace: true, state: {} });
         }
     }, [location.state, navigate]);
@@ -266,7 +261,7 @@ const Requests = () => {
                 </div>
             )}
 
-            {/* UI to display alternative airports (Hidden while loading) */}
+            {/* UI to display alternative airports */}
             {!loading && alternatives.length > 0 && (
                 <div style={{ backgroundColor: '#fff3cd', padding: '20px', borderRadius: '8px', margin: '20px auto', maxWidth: '600px', textAlign: 'center', border: '1px solid #ffeeba' }}>
                     {isManualAlt ? (
@@ -301,8 +296,7 @@ const Requests = () => {
                 </div>
             )}
 
-            {/* Main Results Container (Hidden while loading) */}
-            {/* Main Results Container (Hidden while loading) */}
+            {/* Main Results Container */}
             {!loading && (flights.length > 0 || drives.length > 0) && (
                 <div className="requests-container" style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
 

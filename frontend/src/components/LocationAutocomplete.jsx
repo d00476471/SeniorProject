@@ -99,12 +99,12 @@ useEffect(() => {
                         box-sizing: border-box;
                         font-family: inherit;
                         font-size: 14px;
-                        background-color: #ffffff; /* Overrides the dark box */
-                        color: #000000;            /* Overrides white text */
+                        background-color: #ffffff;=
+                        color: #000000;            
                     }
                     gmp-place-autocomplete::part(input):focus {
                         outline: none;
-                        border-color: #007bff; /* Optional: adds a nice blue border on click */
+                        border-color: #007bff;
                     }
                 `}
             </style>
