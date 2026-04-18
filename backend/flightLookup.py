@@ -23,6 +23,8 @@ def lookupRequest(airportCode: str, max_price: int, depart: str, ret: str):
 
     if "destinations" in response:
             for item in response["destinations"]:
+                destAirport = item.get("destination_airport")
+                destCode = destAirport.get("code") if destAirport else None
                 destination = {
                     "city_name": item.get("name"),
                     "country": item.get("country"),
@@ -33,6 +35,7 @@ def lookupRequest(airportCode: str, max_price: int, depart: str, ret: str):
                     "duration_minutes": item.get("flight_duration"),
                     "stops": item.get("number_of_stops"),
                     "origin": airportCode,
+                    "destinationAirport": destCode,
                     "flight_link": item.get("link")
                 }
                 flight_results.append(destination)
@@ -42,19 +45,18 @@ def lookupRequest(airportCode: str, max_price: int, depart: str, ret: str):
 
     return flight_results
 
-def hotelSearch(destination: str, max_price: int, depart: int, ret: int):
-    print(f"Searching hotels in {destination} under ${max_price}/night...")
+def hotelSearch(location: str, max_price: int, depart: int, ret: int):
+    print(f"Searching hotels in {location} under ${max_price}/night...")
     
     params = {
         "api_key": api_key,
         "engine": "google_hotels",
-        "q": f"hotels in {destination}",
+        "q": f"hotels in {location}",
         "check_in_date": depart,
         "check_out_date": ret,
         "currency": "USD",
         "max_price": max_price,
         # filter out different types of hotels https://serpapi.com/google-hotels-property-types
-        "property_types": (12, 13, 15, 16, 17, 18, 19),
         #"sort_by": 8, # Can change sorting order or leave it out completely
                       # 3 - Lowest price | 8 - Highest rating | 13 - Most reviewed
     }

@@ -162,11 +162,11 @@ def add_request(req: detailsRequest):
 
 @app.post(path="/alt-flights")
 def get_alternative_flights(req: Request):
-    # Here, req.location is the exact 3-letter IATA code (e.g., "LAS")
+    # req.location is the 3-letter IATA code
     print(f"Looking for alternative flights specifically from {req.location}")
     
     try:
-        # Pass the IATA code directly into your lookup function
+        # Pass the IATA code directly into lookup function
         results = flightLookup.lookupRequest(req.location, req.budget, req.depart, req.ret)
         
         flightResults.clear() # Clear out old results
@@ -211,7 +211,6 @@ async def filter_destinations(request: FilterRequest):
         }}
         """
 
-        # 🚨 Call the model using the new syntax and config structure
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt,

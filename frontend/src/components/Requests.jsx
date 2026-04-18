@@ -149,9 +149,17 @@ const Requests = () => {
         if (isSelected) {
             setSelectedTrips(selectedTrips.filter(t => t.id !== tripId));
         } else {
+            let locationLabel = trip.city_name;
+
+            if (type === "drive") {
+                locationLabel = `${trip.city_name}, ${trip.state}`;
+            } else if (type === "flight") {
+                const code = trip.destinationAirport || "N/A";
+                locationLabel = `${trip.city_name} (${code})`;
+            }
             const newTrip = {
                 id: tripId,
-                destination: trip.city_name,
+                destination: locationLabel,
                 country: trip.country || "USA",
                 transport_type: type,
                 transport_cost: type === 'flight' ? (trip.price || trip.flight_price) : 0,
