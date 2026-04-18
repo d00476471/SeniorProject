@@ -134,7 +134,7 @@ const CompareTrips = () => {
 
                         <div className="cost-section">
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-                                <p style={{ margin: 0 }}>Transport: <strong>${trip.transport_cost}</strong></p>
+                                <p style={{ margin: 0 }}>Estimated Transport Costs: <strong>${trip.transport_cost}</strong></p>
 
                                 {/* flight booking link */}
                                 {trip.flight_link && (

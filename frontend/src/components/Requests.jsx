@@ -162,7 +162,8 @@ const Requests = () => {
                 destination: locationLabel,
                 country: trip.country || "USA",
                 transport_type: type,
-                transport_cost: type === 'flight' ? (trip.price || trip.flight_price) : 0,
+                //For drives I am estimating 30mpg at a cost of 5$ per gallon * 2 for a round trip just for a rough idea
+                transport_cost: type === 'flight' ? (trip.price || trip.flight_price) : type === 'drive' ? Math.round(((Number(String(trip.distance_km).replace(/[^0-9.]/g, '')) * 0.621371) / 30) * 5 * 2) : 0,
                 depart_date: searchParams.depart,
                 return_date: searchParams.ret,
                 budget: searchParams.budget,
