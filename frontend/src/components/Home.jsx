@@ -25,10 +25,6 @@ const Home = () => {
                     <h1 style={{ marginTop: 0, textAlign: 'center', fontSize: '3rem', marginBottom: '10px' }}>
                         Travel Further. Spend Less.
                     </h1>
-                    <p style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem', marginBottom: '30px' }}>
-                        Enter your destination and budget. We'll crunch the numbers on flights, drive times, and hotels.
-                    </p>
-
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         {/* Pass our redirect function into the form */}
                         <AddRequestForm addRequest={handleInitialSearch} />
